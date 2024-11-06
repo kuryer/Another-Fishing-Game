@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerRotation : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Rigidbody rb;
     [SerializeField] Transform Orientation;
     [SerializeField] Transform MovementReferenceObject;
 
-    [Header("Walking Parameters")]
-    [SerializeField] float walkingSpeed;
+    [Header("Rotation Parameters")]
     [SerializeField] float rotationSpeed;
     Vector2 inputDirection;
     void Start()
@@ -35,7 +30,7 @@ public class PlayerRotation : MonoBehaviour
         Vector3 moveDir = Orientation.forward * inputDirection.y + Orientation.right * inputDirection.x;
 
         if (moveDir != Vector3.zero)
-            transform.parent.forward = Vector3.Slerp(transform.parent.forward, moveDir.normalized, Time.deltaTime * rotationSpeed);
+            transform.forward = Vector3.Slerp(transform.forward, moveDir.normalized, Time.deltaTime * rotationSpeed);
     }
 
     public void SetMoveDirection(InputAction.CallbackContext context)
