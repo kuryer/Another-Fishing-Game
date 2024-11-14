@@ -14,7 +14,8 @@ public class PlayerAim : MonoBehaviour
     [Header("Variables")]
     [SerializeField] ActivityStateValue actualActivityState;
     [SerializeField] ActivityState aimingActivityState;
-    
+    [SerializeField] ActivityState wanderingActivityState;
+
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerAim : MonoBehaviour
     void StopAiming()
     {
         cameraManager.ChangeLiveCamera(defaultCamera);
+        actualActivityState.Set(wanderingActivityState);
     }
 
 }
