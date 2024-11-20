@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        if (rb.velocity.magnitude > maxMovementSpeed)
+        if (rb.linearVelocity.magnitude > maxMovementSpeed)
             return;
         rb.AddForce((orientation.forward * inputDir.y + orientation.right * inputDir.x) * movementSpeed);
     }
