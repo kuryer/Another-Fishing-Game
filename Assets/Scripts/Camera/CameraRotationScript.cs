@@ -7,25 +7,29 @@ public class CameraRotationScript : MonoBehaviour
     [SerializeField] Transform cameraRotationObject;
     [SerializeField] Vector2 rotationRange;
     Vector2 mouseInput;
+    Vector2 previousInput;
     Vector3 rotate;
     Resolution resolution;
 
     void Start()
     {
         resolution = Screen.currentResolution;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-
-        rotate = new Vector3(mouseInput.y * sensitivity, mouseInput.x, 0f);
-        Debug.Log(rotate);
-        cameraRotationObject.eulerAngles = rotate;
+        //Debug.Log(Input.mousePositionDelta);
+        Vector2 rotationMovementDelta = previousInput - mouseInput;
+        //Debug.Log(rotationMovementDelta);
+        cameraRotationObject.eulerAngles += new Vector3(rotationMovementDelta.y * sensitivity, rotationMovementDelta.x, 0f);
     }
 
     public void GetMouseInput(InputAction.CallbackContext context)
     {
+        previousInput = mouseInput;
         mouseInput = context.ReadValue<Vector2>();
+        Debug.Log("previous: " + previousInput + ", present: " + mouseInput);
     }
 
     Vector2 GetRotationScale()
