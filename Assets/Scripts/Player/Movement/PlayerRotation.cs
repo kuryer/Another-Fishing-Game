@@ -10,6 +10,7 @@ public class PlayerRotation : MonoBehaviour
     [Header("Rotation Parameters")]
     [SerializeField] float rotationSpeed;
     Vector2 inputDirection;
+    Vector2 MousePos;
 
     void Start()
     {
@@ -19,9 +20,16 @@ public class PlayerRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
+        Rotate();
     }
 
+
+    void Rotate()
+    {
+        Orientation.eulerAngles = new Vector3(MousePos.y * -1, 0);
+        transform.eulerAngles = new Vector3(0, MousePos.x);
+    }
 
     void Move()
     {
@@ -32,6 +40,13 @@ public class PlayerRotation : MonoBehaviour
 
         if (moveDir != Vector3.zero)
             transform.forward = Vector3.Slerp(transform.forward, moveDir.normalized, Time.deltaTime * rotationSpeed);
+    }
+
+    public void GetMouseInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        MousePos = context.ReadValue<Vector2>();
     }
 
     public void SetMoveDirection(InputAction.CallbackContext context)

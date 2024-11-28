@@ -14,20 +14,21 @@ public class CameraRotationScript : MonoBehaviour
     void Start()
     {
         resolution = Screen.currentResolution;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         //Debug.Log(Input.mousePositionDelta);
-        Vector2 rotationMovementDelta = previousInput - mouseInput;
+        //Vector2 rotationMovementDelta = previousInput - mouseInput;
         //Debug.Log(rotationMovementDelta);
-        cameraRotationObject.eulerAngles += new Vector3(rotationMovementDelta.y * sensitivity, rotationMovementDelta.x, 0f);
+        cameraRotationObject.rotation = Quaternion.Euler(new Vector3(mouseInput.y * sensitivity, mouseInput.x, 0f));
     }
 
     public void GetMouseInput(InputAction.CallbackContext context)
     {
-        previousInput = mouseInput;
+        
+        //previousInput = mouseInput;
         mouseInput = context.ReadValue<Vector2>();
         Debug.Log("previous: " + previousInput + ", present: " + mouseInput);
     }
