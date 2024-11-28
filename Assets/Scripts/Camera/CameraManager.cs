@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCameraBase liveCamera;
-
+    [SerializeField] PlayerRotation playerRotation;
 
     void Start()
     {
@@ -24,5 +24,6 @@ public class CameraManager : MonoBehaviour
         camera.enabled = true;
         liveCamera.enabled = false;
         liveCamera = camera;
+        playerRotation.SetCameraReferenceObject(camera.transform);
     }
 }

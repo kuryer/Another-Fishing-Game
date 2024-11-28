@@ -21,14 +21,6 @@ public class PlayerRotation : MonoBehaviour
     void Update()
     {
         Move();
-        //Rotate();
-    }
-
-
-    void Rotate()
-    {
-        Orientation.eulerAngles = new Vector3(MousePos.y * -1, 0);
-        transform.eulerAngles = new Vector3(0, MousePos.x);
     }
 
     void Move()
@@ -36,11 +28,17 @@ public class PlayerRotation : MonoBehaviour
         Vector3 viewDir = transform.position - new Vector3(MovementReferenceObject.position.x, transform.position.y, MovementReferenceObject.position.z);
         Orientation.transform.forward = viewDir.normalized;
 
-        Vector3 moveDir = Orientation.forward * inputDirection.y + Orientation.right * inputDirection.x;
+        Vector3 moveDir = Orientation.forward;
         //Vector3 moveDir = Orientation.forward * inputDirection.y + Orientation.right * inputDirection.x;
 
         if (moveDir != Vector3.zero)
             transform.forward = Vector3.Slerp(transform.forward, moveDir.normalized, Time.deltaTime * rotationSpeed);
+    }
+
+    public void SetCameraReferenceObject(Transform newObject)
+    {
+        if (gameObject == null) return;
+        MovementReferenceObject = newObject;
     }
 
     public void GetMouseInput(InputAction.CallbackContext context)
