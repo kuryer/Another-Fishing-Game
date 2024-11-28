@@ -20,8 +20,8 @@ public class PlayerRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move();
-        Rotate();
+        Move();
+        //Rotate();
     }
 
 
@@ -37,6 +37,7 @@ public class PlayerRotation : MonoBehaviour
         Orientation.transform.forward = viewDir.normalized;
 
         Vector3 moveDir = Orientation.forward * inputDirection.y + Orientation.right * inputDirection.x;
+        //Vector3 moveDir = Orientation.forward * inputDirection.y + Orientation.right * inputDirection.x;
 
         if (moveDir != Vector3.zero)
             transform.forward = Vector3.Slerp(transform.forward, moveDir.normalized, Time.deltaTime * rotationSpeed);
@@ -55,5 +56,6 @@ public class PlayerRotation : MonoBehaviour
             return;
 
         inputDirection = context.ReadValue<Vector2>();
+        Debug.Log(inputDirection);
     }
 }
