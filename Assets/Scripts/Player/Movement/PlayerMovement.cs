@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.linearVelocity.magnitude > maxMovementSpeed)
             return;
-        rb.AddForce((orientation.forward * inputDir.y + orientation.right * inputDir.x) * movementSpeed);
+        rb.linearVelocity = ((orientation.forward * inputDir.y + orientation.right * inputDir.x) * movementSpeed);
     }
 
     public void GetMovementInput(InputAction.CallbackContext context)

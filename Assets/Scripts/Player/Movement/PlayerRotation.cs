@@ -11,6 +11,7 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField] float rotationSpeed;
     Vector2 inputDirection;
     Vector2 MousePos;
+    Vector2 previousMousePos;
 
     void Start()
     {
@@ -20,7 +21,17 @@ public class PlayerRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
+        Rotate();
+    }
+
+    void Rotate()
+    {
+        previousMousePos = MousePos;
+        MousePos = Input.mousePosition;
+        Vector3 mousePosDelta = MousePos - previousMousePos;
+        Debug.Log(mousePosDelta);
+        transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0);
     }
 
     void Move()
@@ -45,6 +56,7 @@ public class PlayerRotation : MonoBehaviour
     {
         if (!context.performed)
             return;
+        previousMousePos = MousePos;
         MousePos = context.ReadValue<Vector2>();
     }
 
