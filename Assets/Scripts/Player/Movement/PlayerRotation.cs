@@ -30,7 +30,7 @@ public class PlayerRotation : MonoBehaviour
         previousMousePos = MousePos;
         MousePos = Input.mousePosition;
         Vector3 mousePosDelta = MousePos - previousMousePos;
-        Debug.Log(mousePosDelta);
+        //Debug.Log(mousePosDelta);
         transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0);
     }
 
