@@ -239,40 +239,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f608842521535d41af027607ad732e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwTrajectory:
+  throwTrajectoryX:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.08165492
-      value: 0.31541872
-      inSlope: 2.0102224
-      outSlope: 2.3957567
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.64280576
-      outWeight: 0.06150294
-    - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -4.837048
-      outSlope: -4.837048
-      tangentMode: 0
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.06570979
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bobSpeed: 0.5
+  throwTrajectoryY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.466981
+      outSlope: 3.466981
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.033333335
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.3962245
+      outSlope: -3.3962245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.037500024
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  debugValue: 1
+  bobSpeed: 0.05
   bobRB: {fileID: 224709712}
   detection: {fileID: 1926484449}
   waterTag: Water
@@ -833,7 +849,7 @@ Transform:
   m_GameObject: {fileID: 516454137}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.698631, y: 6.346, z: -0.029640794}
+  m_LocalPosition: {x: 9.698631, y: 6.306, z: -0.029640794}
   m_LocalScale: {x: 4.53, y: 1, z: 4.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1768,7 +1784,7 @@ MonoBehaviour:
       - m_Target: {fileID: 224709708}
         m_TargetAssemblyTypeName: Bob, Assembly-CSharp
         m_MethodName: ThrowBob
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
