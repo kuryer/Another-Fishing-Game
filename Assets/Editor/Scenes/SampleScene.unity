@@ -269,15 +269,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 3.466981
-      outSlope: 3.466981
+      inSlope: 1.9441371
+      outSlope: 1.9441371
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.033333335
+      outWeight: 0.06946785
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: -0.5
       inSlope: -3.3962245
       outSlope: -3.3962245
       tangentMode: 0
@@ -287,11 +287,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  debugValue: 1
-  bobSpeed: 0.05
+  debugValue: 0.5
+  bobSpeed: 2
   bobRB: {fileID: 224709712}
   detection: {fileID: 1926484449}
   waterTag: Water
+  directionReference: {fileID: 1715256205}
 --- !u!136 &224709709
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -835,7 +836,7 @@ GameObject:
   - component: {fileID: 516454139}
   m_Layer: 4
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raysCount: 9
-  rayLength: 1.06
+  rayLength: 1.89
   rayStartingDistance: 1.61
   rayStepDistance: 1.27
   rayDirection: {x: 0, y: -1, z: 0}

@@ -11,6 +11,7 @@ public class Bob : MonoBehaviour
     [SerializeField] Rigidbody bobRB;
     [SerializeField] FishingDetection detection;
     [SerializeField] string waterTag;
+    [SerializeField] Transform directionReference;
     Coroutine throwCoroutine;
     Vector3 throwDirection;
     void Start()
@@ -34,7 +35,7 @@ public class Bob : MonoBehaviour
         Vector2 distanceInfo = detection.GetDistance();
         float currentDistance = 0;
         float maxDistance = distanceInfo.x + distanceInfo.y;
-        throwDirection = bobRB.transform.forward.normalized;
+        throwDirection = directionReference.forward.normalized;
         Vector3 startingPos = bobRB.position;
         Debug.Log("BobTravel");
         while (enabled)
@@ -49,8 +50,7 @@ public class Bob : MonoBehaviour
     {
         float x = throwTrajectoryX.Evaluate(time) * throwDirection.x;
         float z = throwTrajectoryX.Evaluate(time) * throwDirection.z;
-        float y = throwTrajectoryY.Evaluate(time);
-        Debug.Log(time);
+        float y = throwTrajectoryY.Evaluate(time) * debugValue;
         return new Vector3(x, y, z);
     }
 
@@ -60,6 +60,7 @@ public class Bob : MonoBehaviour
         {
             Debug.Log("StopCoroutine");
             StopCoroutine(throwCoroutine);  
+            enabled = false;
         }
     }
 }
