@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54975e68c284ea14b877400b2fdd406d, type: 3}
   m_Name: Wandering Activity State
   m_EditorClassIdentifier: 
+  OnStartedEvent: {fileID: 11400000, guid: a7c1fef500716934d97d5524e6db7af6, type: 2}
+  OnFinishedEvent: {fileID: 11400000, guid: eda22cbcd4bea1e488f7c1d6886253d1, type: 2}

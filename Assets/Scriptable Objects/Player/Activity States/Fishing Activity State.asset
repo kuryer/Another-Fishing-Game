@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54975e68c284ea14b877400b2fdd406d, type: 3}
   m_Name: Fishing Activity State
   m_EditorClassIdentifier: 
+  OnStartedEvent: {fileID: 11400000, guid: e301faf948d77a641b5f49f58a41846d, type: 2}
+  OnFinishedEvent: {fileID: 11400000, guid: 4816bdcf3995d5e46b61210519a4bf69, type: 2}

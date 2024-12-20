@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Bob : MonoBehaviour
+public class BobThrow : MonoBehaviour
 {
     [SerializeField] AnimationCurve throwTrajectoryX;
     [SerializeField] AnimationCurve throwTrajectoryY;
@@ -12,6 +12,8 @@ public class Bob : MonoBehaviour
     [SerializeField] FishingDetection detection;
     [SerializeField] string waterTag;
     [SerializeField] Transform directionReference;
+    [SerializeField] PlayerStateManager playerStateManager;
+    [SerializeField] ActivityState fishingState;
     Coroutine throwCoroutine;
     Vector3 throwDirection;
     void Start()
@@ -26,8 +28,11 @@ public class Bob : MonoBehaviour
 
     public void ThrowBob(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed && enabled)
+        {
+            playerStateManager.ChangeState(fishingState);
             throwCoroutine = StartCoroutine(BobTravel());
+        }
     }
 
     IEnumerator BobTravel()
@@ -59,7 +64,7 @@ public class Bob : MonoBehaviour
         if (other.CompareTag(waterTag))
         {
             Debug.Log("StopCoroutine");
-            StopCoroutine(throwCoroutine);  
+            StopCoroutine(throwCoroutine);
             enabled = false;
         }
     }

@@ -24,6 +24,6 @@ public class CameraManager : MonoBehaviour
         camera.enabled = true;
         liveCamera.enabled = false;
         liveCamera = camera;
-        playerRotation.SetCameraReferenceObject(camera.transform);
+        //playerRotation.SetCameraReferenceObject(camera.transform);
     }
 }

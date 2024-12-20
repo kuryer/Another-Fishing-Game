@@ -12,6 +12,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] CinemachineVirtualCameraBase defaultCamera;
 
     [Header("Variables")]
+    [SerializeField] PlayerStateManager playerStateManager;
     [SerializeField] ActivityStateValue actualActivityState;
     [SerializeField] ActivityState aimingActivityState;
     [SerializeField] ActivityState wanderingActivityState;
@@ -38,13 +39,13 @@ public class PlayerAim : MonoBehaviour
     void StartAiming()
     {
         cameraManager.ChangeLiveCamera(fishingCamera);
-        actualActivityState.Set(aimingActivityState);
+        playerStateManager.ChangeState(aimingActivityState);
     }
 
     void StopAiming()
     {
         cameraManager.ChangeLiveCamera(defaultCamera);
-        actualActivityState.Set(wanderingActivityState);
+        playerStateManager.ChangeState(wanderingActivityState);
     }
 
 }

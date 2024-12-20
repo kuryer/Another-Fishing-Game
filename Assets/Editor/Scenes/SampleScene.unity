@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 49253343}
   - component: {fileID: 49253342}
   m_Layer: 0
-  m_Name: Virtual Camera
+  m_Name: Fishing Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 49253341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: -6.85, z: -8.4800005}
+  m_LocalPosition: {x: 20.5, y: -6.79, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -205,6 +205,8 @@ GameObject:
   - component: {fileID: 224709709}
   - component: {fileID: 224709712}
   - component: {fileID: 224709708}
+  - component: {fileID: 224709714}
+  - component: {fileID: 224709713}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -277,7 +279,7 @@ MonoBehaviour:
       outWeight: 0.06946785
     - serializedVersion: 3
       time: 1
-      value: -0.5
+      value: -0.6
       inSlope: -3.3962245
       outSlope: -3.3962245
       tangentMode: 0
@@ -293,6 +295,8 @@ MonoBehaviour:
   detection: {fileID: 1926484449}
   waterTag: Water
   directionReference: {fileID: 1715256205}
+  playerStateManager: {fileID: 2025298903}
+  fishingState: {fileID: 11400000, guid: 45f233598b7158b49b13150e7c7cd796, type: 2}
 --- !u!136 &224709709
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -396,6 +400,49 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &224709713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224709706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20a4d5b891aaf843b8e374da28c7874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e301faf948d77a641b5f49f58a41846d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 224709714}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &224709714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224709706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb579b0155843e540bb56e41b9b8dc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceTransform: {fileID: 2025298896}
+  bobRB: {fileID: 224709712}
+  reelingSpeed: 1
 --- !u!1 &238032139
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +515,7 @@ GameObject:
   - component: {fileID: 291112194}
   - component: {fileID: 291112193}
   m_Layer: 0
-  m_Name: Wandering 2 Camera
+  m_Name: Wandering Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,7 +1332,6 @@ GameObject:
   - component: {fileID: 1206343510}
   - component: {fileID: 1206343511}
   - component: {fileID: 1206343512}
-  - component: {fileID: 1206343513}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1332,11 +1378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 1.5, y: 0.13, z: 0}
-  VerticalArmLength: 0.21
+  Damping: {x: 0, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 1.49, y: -0.09, z: 0}
+  VerticalArmLength: 0.49
   CameraSide: 1
-  CameraDistance: 1.37
+  CameraDistance: 2.59
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -1344,19 +1390,6 @@ MonoBehaviour:
   CameraRadius: 0.2
   DampingIntoCollision: 0
   DampingFromCollision: 2
---- !u!114 &1206343513
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206343509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Damping: 0
 --- !u!1 &1715256204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1437,7 @@ MonoBehaviour:
   cameraManager: {fileID: 766937467}
   fishingCamera: {fileID: 49253342}
   defaultCamera: {fileID: 291112193}
+  playerStateManager: {fileID: 2025298903}
   actualActivityState: {fileID: 11400000, guid: 4ca8e2a0acd098d4cbeb48a03339f6b3,
     type: 2}
   aimingActivityState: {fileID: 11400000, guid: 7283de1e8c52a6c4a99f6e0b368605aa,
@@ -1574,6 +1608,7 @@ GameObject:
   - component: {fileID: 2025298901}
   - component: {fileID: 2025298900}
   - component: {fileID: 2025298902}
+  - component: {fileID: 2025298903}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1687,8 +1722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5e53194872e1c4a8ff6dec4b31e843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Orientation: {fileID: 0}
-  MovementReferenceObject: {fileID: 0}
   rotationSpeed: 50
 --- !u!114 &2025298901
 MonoBehaviour:
@@ -1746,18 +1779,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2025298900}
-        m_TargetAssemblyTypeName: PlayerRotation, Assembly-CSharp
-        m_MethodName: SetMoveDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 89e996d7-c9e9-46cd-afb8-7a96558355a7
     m_ActionName: 'Default/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
@@ -1794,6 +1815,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 224709714}
+        m_TargetAssemblyTypeName: BobReel, Assembly-CSharp
+        m_MethodName: ReelBobInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 63ca7cb9-b131-47d8-b9c0-46aa184a20c5
     m_ActionName: 'Default/Throw[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -1801,6 +1834,19 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2025298903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025298895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bced4ec6c22f743bed97f8c1604b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualState: {fileID: 11400000, guid: 4ca8e2a0acd098d4cbeb48a03339f6b3, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
