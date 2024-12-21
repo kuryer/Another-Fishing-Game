@@ -8,6 +8,10 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineVirtualCameraBase liveCamera;
     [SerializeField] PlayerRotation playerRotation;
 
+    [Header("Cameras")]
+    [SerializeField] CinemachineVirtualCameraBase wanderingCamera;
+    [SerializeField] CinemachineVirtualCameraBase fishingCamera;
+
     void Start()
     {
         
@@ -17,6 +21,16 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetFishingCamera()
+    {
+        ChangeLiveCamera(fishingCamera);
+    }
+
+    public void SetWanderingCamera()
+    {
+        ChangeLiveCamera(wanderingCamera);
     }
 
     public void ChangeLiveCamera(CinemachineVirtualCameraBase camera)

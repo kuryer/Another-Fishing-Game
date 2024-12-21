@@ -443,6 +443,10 @@ MonoBehaviour:
   sourceTransform: {fileID: 2025298896}
   bobRB: {fileID: 224709712}
   reelingSpeed: 1
+  fishingDetection: {fileID: 1926484449}
+  waterTag: Water
+  playerStateManager: {fileID: 2025298903}
+  wanderingState: {fileID: 11400000, guid: ebc7a95de3cc13846b4ba05c469f32c1, type: 2}
 --- !u!1 &238032139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1024,8 @@ GameObject:
   m_Component:
   - component: {fileID: 766937466}
   - component: {fileID: 766937467}
+  - component: {fileID: 766937469}
+  - component: {fileID: 766937468}
   m_Layer: 0
   m_Name: Camera Manager
   m_TagString: Untagged
@@ -1056,6 +1062,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liveCamera: {fileID: 291112193}
   playerRotation: {fileID: 2025298900}
+  wanderingCamera: {fileID: 291112193}
+  fishingCamera: {fileID: 49253342}
+--- !u!114 &766937468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766937465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20a4d5b891aaf843b8e374da28c7874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a7c1fef500716934d97d5524e6db7af6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 766937467}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: SetWanderingCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &766937469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766937465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20a4d5b891aaf843b8e374da28c7874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 905a8bb9b26fa914b9d22d169c1c0eac, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 766937467}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: SetFishingCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &790243979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,9 +1498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142e73664feb2a74194998fec89a5088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraManager: {fileID: 766937467}
-  fishingCamera: {fileID: 49253342}
-  defaultCamera: {fileID: 291112193}
   playerStateManager: {fileID: 2025298903}
   actualActivityState: {fileID: 11400000, guid: 4ca8e2a0acd098d4cbeb48a03339f6b3,
     type: 2}

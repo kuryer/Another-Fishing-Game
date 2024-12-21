@@ -42,7 +42,6 @@ public class BobThrow : MonoBehaviour
         float maxDistance = distanceInfo.x + distanceInfo.y;
         throwDirection = directionReference.forward.normalized;
         Vector3 startingPos = bobRB.position;
-        Debug.Log("BobTravel");
         while (enabled)
         {
             bobRB.position = startingPos + maxDistance * EvaluateTrajectory(currentDistance / maxDistance);
@@ -63,7 +62,6 @@ public class BobThrow : MonoBehaviour
     {
         if (other.CompareTag(waterTag))
         {
-            Debug.Log("StopCoroutine");
             StopCoroutine(throwCoroutine);
             enabled = false;
         }
