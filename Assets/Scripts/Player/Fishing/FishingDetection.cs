@@ -58,12 +58,14 @@ public class FishingDetection : MonoBehaviour
                 last = i - 1;
                 break;
             }
+            if (i + 1 == raysCount && detections[i])
+                last = i;
         }
         float minDistance = rayStartingDistance + rayStepDistance * first;
         float maxDistance = rayStartingDistance + rayStepDistance * last;
         float distance = maxDistance - minDistance;
-        Debug.Log("Max:" + maxDistance + ", min: " + minDistance + ", distance: " + distance);
-        Debug.Log("first:" + first + ", last: " + last);
+        //Debug.Log("Max:" + maxDistance + ", min: " + minDistance + ", distance: " + distance);
+        //Debug.Log("first:" + first + ", last: " + last);
         return new Vector2(minDistance, distance);
     }
 }

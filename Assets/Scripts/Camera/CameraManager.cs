@@ -31,6 +31,7 @@ public class CameraManager : MonoBehaviour
     public void SetWanderingCamera()
     {
         ChangeLiveCamera(wanderingCamera);
+        Debug.Log("Hello?");
     }
 
     public void ChangeLiveCamera(CinemachineVirtualCameraBase camera)

@@ -30,6 +30,7 @@ public class BobThrow : MonoBehaviour
     {
         if (context.performed && enabled)
         {
+            transform.position = directionReference.position + new Vector3(0,5f,0);
             playerStateManager.ChangeState(fishingState);
             throwCoroutine = StartCoroutine(BobTravel());
         }

@@ -22,7 +22,7 @@ public class PlayerAim : MonoBehaviour
 
     public void AimingAction(InputAction.CallbackContext context)
     {
-        if (context.performed) 
+        if (context.performed && actualActivityState.Item == wanderingActivityState) 
             StartAiming();
         if (context.canceled && actualActivityState.Item == aimingActivityState) 
             StopAiming();

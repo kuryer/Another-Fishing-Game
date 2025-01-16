@@ -43,8 +43,9 @@ public class BobReel : MonoBehaviour
 
     void TakeOutBob()
     {
-        bobRB.position = new Vector3(0, 10, 0);
+        bobRB.transform.localPosition = new Vector3(0, 1.5f, 0);
         playerStateManager.ChangeState(wanderingState);
+        enabled = false;
     }
 
     public void ReelBobInput(InputAction.CallbackContext context)
