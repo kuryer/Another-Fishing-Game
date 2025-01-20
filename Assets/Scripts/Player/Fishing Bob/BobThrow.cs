@@ -14,6 +14,8 @@ public class BobThrow : MonoBehaviour
     [SerializeField] Transform directionReference;
     [SerializeField] PlayerStateManager playerStateManager;
     [SerializeField] ActivityState fishingState;
+    [SerializeField] BobReel reelScript;
+    bool isThrowing;
     Coroutine throwCoroutine;
     Vector3 throwDirection;
     void Start()
@@ -28,11 +30,12 @@ public class BobThrow : MonoBehaviour
 
     public void ThrowBob(InputAction.CallbackContext context)
     {
-        if (context.performed && enabled)
+        if (context.performed && enabled && !isThrowing)
         {
             transform.position = directionReference.position + new Vector3(0,5f,0);
             playerStateManager.ChangeState(fishingState);
             throwCoroutine = StartCoroutine(BobTravel());
+            isThrowing = true;
         }
     }
 
@@ -64,7 +67,13 @@ public class BobThrow : MonoBehaviour
         if (other.CompareTag(waterTag))
         {
             StopCoroutine(throwCoroutine);
+            reelScript.enabled = true;
             enabled = false;
         }
+    }
+
+    private void OnDisable()
+    {
+        isThrowing = false;
     }
 }

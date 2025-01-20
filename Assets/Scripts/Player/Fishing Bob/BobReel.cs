@@ -33,7 +33,7 @@ public class BobReel : MonoBehaviour
         bobRB.position = bobRB.position + direction.normalized * reelingSpeed * Time.deltaTime;
     }
 
-    bool IsInMinDistance()
+    bool IsInMinDistance() //on tu musi zapamietywaæ jak¹œ pozycje i w relacji do zapamietywanej pozycji
     {
         Vector2 bobPos = new Vector2 (bobRB.position.x, bobRB.position.z);
         Vector2 sourcePos = new Vector2(sourceTransform.position.x, sourceTransform.position.z);

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    [SerializeField] ActivityState defaultState;
     [SerializeField] ActivityStateValue actualState;
     void Start()
     {
@@ -18,6 +19,11 @@ public class PlayerStateManager : MonoBehaviour
         actualState.Item.StateFinished();
         actualState.Item = newState;
         actualState.Item.StateStarted();
+    }
+
+    private void OnDisable()
+    {
+        actualState.Item = defaultState;
     }
 
 }
