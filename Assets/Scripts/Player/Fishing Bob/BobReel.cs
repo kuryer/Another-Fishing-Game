@@ -8,22 +8,57 @@ public class BobReel : MonoBehaviour
     [SerializeField] float reelingSpeed;
     [SerializeField] FishingDetection fishingDetection;
     [SerializeField] string waterTag;
+    float minDistance;
+    bool isReeling;
     [Header("State Management")]
     [SerializeField] PlayerStateManager playerStateManager;
     [SerializeField] ActivityState wanderingState;
-    float minDistance;
-    bool isReeling;
+
+    [Header("Fish Reeling")]
+    WaterBasin currentBasin;
+    Fish currentFish;
+    [SerializeField] float fishQueryInterval;
+    float currentfishQueryTime;
     void Start()
     {
         
     }
 
+    private void OnEnable()
+    {
+        currentFish = null;
+    }
+
     void Update()
     {
+        if (currentFish is not null)
+            return;
+
+        QueryFish();
+
         if (isReeling)
             ReelBob();
         if(IsInMinDistance())
             TakeOutBob();
+    }
+
+    void QueryFish()
+    {
+        if (currentfishQueryTime <= 0)
+        {
+            currentFish = currentBasin.isFishOnReel();
+            if (currentFish == null)
+            {
+                currentfishQueryTime = fishQueryInterval;
+                return;
+            }
+            else
+            {
+                //ustaw animacje
+            }
+
+        }
+        currentfishQueryTime -= Time.deltaTime;
     }
 
     void ReelBob()
@@ -50,18 +85,34 @@ public class BobReel : MonoBehaviour
 
     public void ReelBobInput(InputAction.CallbackContext context)
     {
-        if(context.performed)
-            isReeling = true;
-        if(context.canceled)
-            isReeling= false;
+        if(currentFish == null)
+        {
+            if (context.performed)
+                isReeling = true;
+            if (context.canceled)
+                isReeling = false;
+        }
+        else
+        {
+            if (context.started)
+                startMinigame();
+        }
+
+    }
+
+    void startMinigame()
+    {
+        Debug.Log("Minigame");
+        enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(waterTag))
         {
-            enabled = true;
             minDistance = fishingDetection.GetDistance().x;
+            currentBasin = other.GetComponent<WaterBasin>();
+            enabled = true;
         }
     }
 }
