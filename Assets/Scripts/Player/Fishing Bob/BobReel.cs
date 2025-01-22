@@ -16,7 +16,7 @@ public class BobReel : MonoBehaviour
 
     [Header("Fish Reeling")]
     WaterBasin currentBasin;
-    Fish currentFish;
+    [SerializeField] FishValue currentFish;
     [SerializeField] float fishQueryInterval;
     float currentfishQueryTime;
 
@@ -29,12 +29,12 @@ public class BobReel : MonoBehaviour
 
     private void OnEnable()
     {
-        currentFish = null;
+        currentFish.SetNull();
     }
 
     void Update()
     {
-        if (currentFish is not null)
+        if (currentFish.Item is not null)
             return;
 
         QueryFish();
@@ -49,8 +49,8 @@ public class BobReel : MonoBehaviour
     {
         if (currentfishQueryTime <= 0)
         {
-            currentFish = currentBasin.isFishOnReel();
-            if (currentFish == null)
+            currentFish.Item = currentBasin.isFishOnReel();
+            if (currentFish.Item == null)
             {
                 currentfishQueryTime = fishQueryInterval;
                 return;
@@ -92,7 +92,7 @@ public class BobReel : MonoBehaviour
     {
         if (!enabled)
             return;
-        if(currentFish == null)
+        if(currentFish.Item == null)
         {
             if (context.performed)
                 isReeling = true;
@@ -109,7 +109,6 @@ public class BobReel : MonoBehaviour
 
     void startMinigame()
     {
-        Debug.Log("Minigame");
         minigameObject.SetActive(true);
         enabled = false;
     }
