@@ -19,6 +19,9 @@ public class BobReel : MonoBehaviour
     Fish currentFish;
     [SerializeField] float fishQueryInterval;
     float currentfishQueryTime;
+
+    [Header("Minigame")]
+    [SerializeField] GameObject minigameObject;
     void Start()
     {
         
@@ -55,11 +58,13 @@ public class BobReel : MonoBehaviour
             else
             {
                 //ustaw animacje
+                
             }
 
         }
         currentfishQueryTime -= Time.deltaTime;
     }
+
 
     void ReelBob()
     {
@@ -85,6 +90,8 @@ public class BobReel : MonoBehaviour
 
     public void ReelBobInput(InputAction.CallbackContext context)
     {
+        if (!enabled)
+            return;
         if(currentFish == null)
         {
             if (context.performed)
@@ -103,6 +110,7 @@ public class BobReel : MonoBehaviour
     void startMinigame()
     {
         Debug.Log("Minigame");
+        minigameObject.SetActive(true);
         enabled = false;
     }
 

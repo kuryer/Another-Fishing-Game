@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Water
+  - Slider Block
   layers:
   - Default
   - TransparentFX
