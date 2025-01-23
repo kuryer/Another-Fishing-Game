@@ -16,6 +16,7 @@ public class PlayerStateManager : MonoBehaviour
 
     public void ChangeState(ActivityState newState)
     {
+        Debug.Log("State Changed: " + newState.name);
         actualState.Item.StateFinished();
         actualState.Item = newState;
         actualState.Item.StateStarted();

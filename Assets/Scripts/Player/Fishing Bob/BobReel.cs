@@ -102,17 +102,14 @@ public class BobReel : MonoBehaviour
     {
         Vector3 startingPos = bobRB.position;
         float distance = Vector3.Distance(startingPos, takeOutDestination.position);
-        Debug.Log(distance);
         float currentDistance = 0;
         takeOutDirection = takeOutDestination.forward.normalized;
         while (currentDistance < distance)
         {
             bobRB.position = startingPos + distance * EvaluateTrajectory(currentDistance / distance);
             currentDistance += takeOutSpeed * Time.deltaTime;
-            Debug.Log(currentDistance);
             yield return null;
         }
-        gameObject.SetActive(false);
         SetProperState();
         enabled = false;
     }

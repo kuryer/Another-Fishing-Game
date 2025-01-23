@@ -36,7 +36,5 @@ public class PlayerAim : MonoBehaviour
     void StopAiming()
     {
         playerStateManager.ChangeState(wanderingActivityState);
-        Debug.Log("Stop Aiming Called");
     }
-
 }

@@ -7,10 +7,15 @@ public class PlayerFishShowcase : MonoBehaviour
     [SerializeField] Transform showcaseCamera;
     [SerializeField] GameObject playerModel;
     [SerializeField] float rotationTime;
+    [SerializeField] PlayerInventory playerInventory;
+    [SerializeField] FishValue currentFish;
+    [SerializeField] SpriteRenderer fishShowcaseRenderer;
     bool isShowcasing;
     [Header("State Management")]
     [SerializeField] PlayerStateManager playerStateManager;
     [SerializeField] ActivityState wanderingState;
+    [Header("Animation")]
+    [SerializeField] PlayerAnimation playerAnimation;
     void Start()
     {
         
@@ -19,12 +24,16 @@ public class PlayerFishShowcase : MonoBehaviour
     public void Rotate(bool towardsCamera)
     {
         if (towardsCamera)
-            StartCoroutine(Rotation(new Vector3(0,180,0), new Vector3(0, 0, 0)));
+        {
+            StartCoroutine(Rotation(new Vector3(0,180,0), new Vector3(0, 360, 0),towardsCamera));
+            playerAnimation.PlayAnimation("fish_caught");
+            fishShowcaseRenderer.sprite = currentFish.Item.itemSprite;
+        }
         else
-            StartCoroutine(Rotation(new Vector3(0, 0, 0), new Vector3(0, 180, 0)));
+            StartCoroutine(Rotation(new Vector3(0, 360, 0), new Vector3(0, 180, 0), towardsCamera));
     }
 
-    IEnumerator Rotation(Vector3 start, Vector3 dest)
+    IEnumerator Rotation(Vector3 start, Vector3 dest, bool isShowcase)
     {
         float elapsedTime = 0f;
         while(elapsedTime < rotationTime)
@@ -34,7 +43,15 @@ public class PlayerFishShowcase : MonoBehaviour
             yield return null;
         }
         playerModel.transform.localEulerAngles = dest;
-        isShowcasing = true;
+        if (isShowcase)
+        {
+            isShowcasing = true;
+        }
+        else
+        {
+            playerAnimation.PlayAnimation("idle");
+            fishShowcaseRenderer.sprite = null;
+        }
     }
 
 
@@ -48,6 +65,8 @@ public class PlayerFishShowcase : MonoBehaviour
     {
         isShowcasing = false;
         Rotate(false);
+        playerInventory.AddItem(currentFish.Item);
+        currentFish.SetNull();
         playerStateManager.ChangeState(wanderingState);
     }
 }

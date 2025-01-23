@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float maxMovementSpeed;
     Vector2 inputDir;
+
+    [Header("Animation")]
+    [SerializeField] PlayerAnimation playerAnimation;
 
     void Start()
     {
@@ -34,5 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public void GetMovementInput(InputAction.CallbackContext context)
     {
         inputDir = context.ReadValue<Vector2>();
+        if (inputDir == Vector2.zero)
+            playerAnimation.PlayAnimation("idle");
+        else
+            playerAnimation.PlayAnimation("walk");
     }
 }

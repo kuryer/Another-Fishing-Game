@@ -105,7 +105,6 @@ public class MinigameScript : MonoBehaviour
 
     private void WinMinigame()
     {
-        Debug.Log("Minigame won");
         ResetScriptValues();
         reelScript.TakeOutBob();
         parentGameObject.SetActive(false);

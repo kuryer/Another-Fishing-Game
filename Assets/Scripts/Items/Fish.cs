@@ -1,9 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Fish", menuName = "Scriptable Objects/Fish")]
-public class Fish : ScriptableObject
+[CreateAssetMenu(fileName = "Fish", menuName = "Scriptable Objects/Items/Fish")]
+public class Fish : Item
 {
-    [SerializeField] public string fishName;
     [Header("Minigame Values")]
     [SerializeField] public Vector2Int blockadesAmount;
     [SerializeField] public Vector2Int blockadesLives;
