@@ -8,6 +8,10 @@ public class PlayerRotation : MonoBehaviour
     Vector2 MousePos;
     Vector2 previousMousePos;
 
+    [Header("Animation Rotation")]
+    bool isAnimating;
+    float naturalRotation;
+
     void Start()
     {
         
@@ -25,10 +29,9 @@ public class PlayerRotation : MonoBehaviour
         Vector3 mousePosDelta = MousePos - previousMousePos;
         transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0);
     }
-
     public void GetMouseInput(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || !enabled)
             return;
         previousMousePos = MousePos;
         MousePos = context.ReadValue<Vector2>();

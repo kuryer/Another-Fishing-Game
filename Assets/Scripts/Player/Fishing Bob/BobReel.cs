@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class BobReel : MonoBehaviour
     [Header("State Management")]
     [SerializeField] PlayerStateManager playerStateManager;
     [SerializeField] ActivityState wanderingState;
+    [SerializeField] ActivityState showcaseState;
 
     [Header("Fish Reeling")]
     WaterBasin currentBasin;
@@ -22,6 +24,16 @@ public class BobReel : MonoBehaviour
 
     [Header("Minigame")]
     [SerializeField] GameObject minigameObject;
+
+    [Header("Take Out")]
+    [SerializeField] Transform takeOutDestination;
+    [SerializeField] float takeOutSpeed;
+    Vector3 takeOutDirection; 
+    [SerializeField] AnimationCurve takeOutTrajectoryX;
+    [SerializeField] AnimationCurve takeOutTrajectoryY;
+
+    [Header("Showcase")]
+    [SerializeField] PlayerFishShowcase fishShowcase;
     void Start()
     {
         
@@ -30,6 +42,7 @@ public class BobReel : MonoBehaviour
     private void OnEnable()
     {
         currentFish.SetNull();
+        isReeling = false;
     }
 
     void Update()
@@ -57,8 +70,7 @@ public class BobReel : MonoBehaviour
             }
             else
             {
-                //ustaw animacje
-                
+                //ustaw animacje ci¹gn¹cej ryby
             }
 
         }
@@ -81,11 +93,47 @@ public class BobReel : MonoBehaviour
         return distance <= minDistance;
     }
 
-    void TakeOutBob()
+    public void TakeOutBob()
     {
-        bobRB.transform.localPosition = new Vector3(0, 1.5f, 0);
-        playerStateManager.ChangeState(wanderingState);
+        StartCoroutine(TakeOutAnimation());
+    }
+
+    IEnumerator TakeOutAnimation()
+    {
+        Vector3 startingPos = bobRB.position;
+        float distance = Vector3.Distance(startingPos, takeOutDestination.position);
+        Debug.Log(distance);
+        float currentDistance = 0;
+        takeOutDirection = takeOutDestination.forward.normalized;
+        while (currentDistance < distance)
+        {
+            bobRB.position = startingPos + distance * EvaluateTrajectory(currentDistance / distance);
+            currentDistance += takeOutSpeed * Time.deltaTime;
+            Debug.Log(currentDistance);
+            yield return null;
+        }
+        gameObject.SetActive(false);
+        SetProperState();
         enabled = false;
+    }
+
+    void SetProperState()
+    {
+        if(currentFish.Item is null)
+            playerStateManager.ChangeState(wanderingState);
+        else
+        {
+            playerStateManager.ChangeState(showcaseState);
+            fishShowcase.Rotate(true);
+        }
+    }
+
+    private Vector3 EvaluateTrajectory(float time)
+    {
+        float x = takeOutTrajectoryX.Evaluate(time) * -takeOutDirection.x;
+        float z = takeOutTrajectoryX.Evaluate(time) * -takeOutDirection.z;
+        float y = takeOutTrajectoryY.Evaluate(time);
+        return new Vector3(x, y, z);
     }
 
     public void ReelBobInput(InputAction.CallbackContext context)

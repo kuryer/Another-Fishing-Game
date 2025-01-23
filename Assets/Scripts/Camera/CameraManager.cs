@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
     [Header("Cameras")]
     [SerializeField] CinemachineVirtualCameraBase wanderingCamera;
     [SerializeField] CinemachineVirtualCameraBase fishingCamera;
+    [SerializeField] CinemachineVirtualCameraBase showcaseCamera;
 
     void Start()
     {
@@ -31,7 +32,11 @@ public class CameraManager : MonoBehaviour
     public void SetWanderingCamera()
     {
         ChangeLiveCamera(wanderingCamera);
-        Debug.Log("Hello?");
+    }
+        
+    public void SetShowcaseCamera()
+    {
+        ChangeLiveCamera(showcaseCamera);
     }
 
     public void ChangeLiveCamera(CinemachineVirtualCameraBase camera)

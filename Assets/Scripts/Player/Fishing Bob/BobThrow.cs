@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class BobThrow : MonoBehaviour
 {
+    [SerializeField] Transform throwStartingPos;
     [SerializeField] AnimationCurve throwTrajectoryX;
     [SerializeField] AnimationCurve throwTrajectoryY;
     [SerializeField] float debugValue;
@@ -32,7 +33,7 @@ public class BobThrow : MonoBehaviour
     {
         if (context.performed && enabled && !isThrowing)
         {
-            transform.position = directionReference.position + new Vector3(0,5f,0);
+            gameObject.SetActive(true);
             playerStateManager.ChangeState(fishingState);
             throwCoroutine = StartCoroutine(BobTravel());
             isThrowing = true;
@@ -45,7 +46,7 @@ public class BobThrow : MonoBehaviour
         float currentDistance = 0;
         float maxDistance = distanceInfo.x + distanceInfo.y;
         throwDirection = directionReference.forward.normalized;
-        Vector3 startingPos = bobRB.position;
+        Vector3 startingPos = throwStartingPos.position;
         while (enabled)
         {
             bobRB.position = startingPos + maxDistance * EvaluateTrajectory(currentDistance / maxDistance);
@@ -58,7 +59,7 @@ public class BobThrow : MonoBehaviour
     {
         float x = throwTrajectoryX.Evaluate(time) * throwDirection.x;
         float z = throwTrajectoryX.Evaluate(time) * throwDirection.z;
-        float y = throwTrajectoryY.Evaluate(time) * debugValue;
+        float y = throwTrajectoryY.Evaluate(time);
         return new Vector3(x, y, z);
     }
 

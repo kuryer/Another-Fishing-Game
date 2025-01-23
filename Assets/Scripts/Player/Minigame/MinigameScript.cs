@@ -9,6 +9,8 @@ public class MinigameScript : MonoBehaviour
     [SerializeField] FloatVariable minigameSliderValue;
     [SerializeField] Slider minigameSlider;
     [SerializeField] float sliderSpeed;
+    [SerializeField] GameObject parentGameObject;
+    [SerializeField] BobReel reelScript;
 
     [Header("Blocks")]
     [SerializeField] FishValue currentFish;
@@ -18,10 +20,16 @@ public class MinigameScript : MonoBehaviour
     SliderBlock currentBlock;
     bool isBlocked;
 
+    [Header("Lose Slider")]
+    [SerializeField] Slider loseSlider;
+    [SerializeField] float loseSliderBufferMaxValue;
+    [SerializeField] float loseSliderSpeed;
+    float loseSliderBuffer;
+
 
     private void OnEnable()
     {
-        minigameSliderValue.SetToDefault();
+        ResetScriptValues();
         SetupBlockades();
     }
 
@@ -48,8 +56,29 @@ public class MinigameScript : MonoBehaviour
 
     private void Update()
     {
+        UpdateLoseSlider();
         if (isHold && !isBlocked)
             AddValue();
+    }
+
+    void UpdateLoseSlider()
+    {
+        if (loseSliderBuffer < loseSliderBufferMaxValue)
+        {
+            loseSliderBuffer += loseSliderSpeed * Time.deltaTime;
+            return;
+        }
+        loseSlider.value += loseSliderSpeed * Time.deltaTime;
+        if (loseSlider.value >= minigameSlider.value)
+            LoseMinigame();
+    }
+
+    void LoseMinigame()
+    {
+        Debug.Log("Minigame Lost");
+        ResetScriptValues();
+        reelScript.TakeOutBob();
+        parentGameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,16 +98,24 @@ public class MinigameScript : MonoBehaviour
     private void AddValue()
     {
         minigameSliderValue.Variable += sliderSpeed * Time.deltaTime;
+        minigameSlider.value = minigameSliderValue.Variable;
         if (minigameSliderValue.Variable >= 100f)
             WinMinigame();
-        minigameSlider.value = minigameSliderValue.Variable;
     }
 
     private void WinMinigame()
     {
         Debug.Log("Minigame won");
-        enabled = false;
+        ResetScriptValues();
+        reelScript.TakeOutBob();
+        parentGameObject.SetActive(false);
+    }
+
+    void ResetScriptValues()
+    {
+        loseSliderBuffer = 0;
         minigameSliderValue.SetToDefault();
+        loseSlider.value = 0;
     }
 
     public void GetMouseInput(InputAction.CallbackContext context)
