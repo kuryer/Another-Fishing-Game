@@ -4,10 +4,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
+    bool inShop;
     [SerializeField] int inventoryCapacity;
     [SerializeField] GameObject inventoryUI;
     Dictionary<Item,int> inventory = new Dictionary<Item,int>();
     [SerializeField] List<ItemBlock> itemBlocks;
+    [SerializeField] List<SellItemScript> sellItems;
+
+    [Header("State Management")]
+    [SerializeField] ActivityStateValue currentActivity;
+    [SerializeField] ActivityState UiActivityState;
+    [SerializeField] ActivityState wanderingActivityState;
+    [SerializeField] PlayerStateManager playerStateManager;
+
+    public void SetShopActive(bool isActive)
+    {
+        inShop = isActive;
+        SetInventoryActive(isActive);
+        foreach (var item in sellItems)
+            item.enabled = isActive;
+    }
+
     public bool isInventoryFull()
     {
         return inventory.Count == inventoryCapacity;
@@ -42,9 +59,38 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(Item item)
+    {
+        foreach(var block in itemBlocks)
+        {
+            if(block.GetItem() == item)
+            {
+                if (inventory[item] == 1)
+                {
+                    inventory.Remove(item);
+                    block.ClearItem();
+                }
+                else
+                {
+                    inventory[item]--;
+                    block.SetCount(inventory[item]);
+                }
+            }
+        }
+    }
+
     public void InventoryInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
+        if (context.performed && !inShop && (currentActivity.Item == wanderingActivityState || inventoryUI.activeInHierarchy))
+            SetInventoryActive(!inventoryUI.activeInHierarchy);
+    }
+
+    void SetInventoryActive(bool isActive)
+    {
+       inventoryUI.SetActive(isActive);
+       if(isActive)
+            playerStateManager.ChangeState(UiActivityState);
+       else
+            playerStateManager.ChangeState(wanderingActivityState);
     }
 }

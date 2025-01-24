@@ -41,6 +41,8 @@ public class CameraManager : MonoBehaviour
 
     public void ChangeLiveCamera(CinemachineVirtualCameraBase camera)
     {
+        if (camera == liveCamera)
+            return;
         camera.enabled = true;
         liveCamera.enabled = false;
         liveCamera = camera;

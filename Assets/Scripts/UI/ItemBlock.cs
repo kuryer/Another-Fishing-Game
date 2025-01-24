@@ -27,7 +27,6 @@ public class ItemBlock : MonoBehaviour
 
     public void SetCount(int count)
     {
-        Debug.Log("Set Count: " + count);
         countText.text = count.ToString();
     }
 
@@ -35,5 +34,6 @@ public class ItemBlock : MonoBehaviour
     {
         currentItem = null;
         itemImage.enabled = false;
+        countText.text = string.Empty;
     }
 }

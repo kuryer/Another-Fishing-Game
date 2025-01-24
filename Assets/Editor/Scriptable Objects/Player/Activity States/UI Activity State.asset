@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54975e68c284ea14b877400b2fdd406d, type: 3}
+  m_Name: UI Activity State
+  m_EditorClassIdentifier: 
+  OnStartedEvent: {fileID: 11400000, guid: fcb4a840abef5bd47b60b75d05dedaee, type: 2}
+  OnFinishedEvent: {fileID: 11400000, guid: 7b34a4349dd899845a8b0b6ec1b22ac3, type: 2}
