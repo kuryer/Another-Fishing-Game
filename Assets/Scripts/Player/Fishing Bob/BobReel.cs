@@ -34,6 +34,9 @@ public class BobReel : MonoBehaviour
 
     [Header("Showcase")]
     [SerializeField] PlayerFishShowcase fishShowcase;
+
+    [Header("Animation")]
+    [SerializeField] PlayerAnimation playerAnimation;
     void Start()
     {
         
@@ -95,6 +98,7 @@ public class BobReel : MonoBehaviour
 
     public void TakeOutBob()
     {
+        playerAnimation.PlayAnimation("fish_takeout");
         StartCoroutine(TakeOutAnimation());
     }
 
@@ -117,7 +121,10 @@ public class BobReel : MonoBehaviour
     void SetProperState()
     {
         if(currentFish.Item is null)
+        {
             playerStateManager.ChangeState(wanderingState);
+            playerAnimation.PlayAnimation("idle");
+        }
         else
         {
             playerStateManager.ChangeState(showcaseState);

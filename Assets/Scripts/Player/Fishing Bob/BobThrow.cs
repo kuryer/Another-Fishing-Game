@@ -21,6 +21,10 @@ public class BobThrow : MonoBehaviour
     bool isThrowing;
     Coroutine throwCoroutine;
     Vector3 throwDirection;
+    [Header("Throw Distance")]
+    bool isHolding;
+    [SerializeField] float maxThrowTime;
+    float throwTime;
     [Header("Activate References")]
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Collider bobCollider;
@@ -32,17 +36,37 @@ public class BobThrow : MonoBehaviour
 
     void Update()
     {
-        
+        ThrowTimer();
+    }
+
+    void ThrowTimer()
+    {
+        if (!isHolding)
+            return;
+        Debug.Log(throwTime);
+        throwTime += Time.deltaTime;
+        if (throwTime >= maxThrowTime)
+            Throw();
     }
 
     public void ThrowBob(InputAction.CallbackContext context)
     {
-        if (context.performed && !isThrowing && currentActivity.Item == aimingState)
+        if (context.performed && !isThrowing && currentActivity.Item == aimingState && detection.CanThrow())
         {
-            playerAnimation.PlayAnimation("rod_cast");
-            playerStateManager.ChangeState(fishingState);
-            isThrowing = true;
+            isHolding = true;
+            enabled = true;
+            throwTime = 0.01f;
         }
+        if (isHolding && context.canceled)
+            Throw();
+    }
+
+    void Throw()
+    {
+        isHolding = false;
+        playerAnimation.PlayAnimation("rod_cast");
+        playerStateManager.ChangeState(fishingState);
+        isThrowing = true;
     }
 
     public void Activate()
@@ -64,12 +88,12 @@ public class BobThrow : MonoBehaviour
     {
         Vector2 distanceInfo = detection.GetDistance();
         float currentDistance = 0;
-        float maxDistance = distanceInfo.x + distanceInfo.y;
+        float distance = distanceInfo.x + distanceInfo.y * (throwTime/maxThrowTime);
         throwDirection = directionReference.forward.normalized;
         Vector3 startingPos = throwStartingPos.position;
         while (enabled)
         {
-            bobRB.position = startingPos + maxDistance * EvaluateTrajectory(currentDistance / maxDistance);
+            bobRB.position = startingPos + distance * EvaluateTrajectory(currentDistance / distance);
             currentDistance += bobSpeed * Time.deltaTime;
             yield return null;
         }

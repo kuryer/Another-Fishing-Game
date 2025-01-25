@@ -10,6 +10,7 @@ public class PlayerFishShowcase : MonoBehaviour
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] FishValue currentFish;
     [SerializeField] SpriteRenderer fishShowcaseRenderer;
+    [SerializeField] BaitValue currentBait;
     bool isShowcasing;
     [Header("State Management")]
     [SerializeField] PlayerStateManager playerStateManager;
@@ -65,6 +66,7 @@ public class PlayerFishShowcase : MonoBehaviour
     {
         isShowcasing = false;
         Rotate(false);
+        playerInventory.RemoveItem(currentBait.Item);
         playerInventory.AddItem(currentFish.Item);
         currentFish.SetNull();
         playerStateManager.ChangeState(wanderingState);

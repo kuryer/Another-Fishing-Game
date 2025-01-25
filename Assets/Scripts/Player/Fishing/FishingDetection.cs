@@ -42,6 +42,16 @@ public class FishingDetection : MonoBehaviour
         }
     }
 
+    public bool CanThrow()
+    {
+        for(int i = 0; i < raysCount; i++)
+        {
+            if (detections[i])
+                return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Method <c>GetDistance</c> returns the starting position and the throw distance inside a Vector2.
     /// </summary>

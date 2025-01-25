@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,29 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] List<ItemBlock> itemBlocks;
     [SerializeField] List<SellItemScript> sellItems;
 
+    [Header("Player's Money")]
+    [SerializeField] IntVariable playerMoney;
+    [SerializeField] TextMeshProUGUI moneyText;
+
     [Header("State Management")]
     [SerializeField] ActivityStateValue currentActivity;
     [SerializeField] ActivityState UiActivityState;
     [SerializeField] ActivityState wanderingActivityState;
     [SerializeField] PlayerStateManager playerStateManager;
+
+    [Header("Debug bait")]
+    [SerializeField] Bait debugBait;
+
+    private void Start()
+    {
+        UpdateMoney();
+        DebugBait();
+    }
+    void DebugBait()
+    {
+        AddItem(debugBait);
+    }
+
 
     public void SetShopActive(bool isActive)
     {
@@ -25,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
             item.enabled = isActive;
     }
 
-    public bool isInventoryFull()
+    public bool IsInventoryFull()
     {
         return inventory.Count == inventoryCapacity;
     }
@@ -92,5 +111,10 @@ public class PlayerInventory : MonoBehaviour
             playerStateManager.ChangeState(UiActivityState);
        else
             playerStateManager.ChangeState(wanderingActivityState);
+    }
+
+    public void UpdateMoney()
+    {
+        moneyText.text = playerMoney.Variable.ToString();
     }
 }

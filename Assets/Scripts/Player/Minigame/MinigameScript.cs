@@ -75,7 +75,6 @@ public class MinigameScript : MonoBehaviour
 
     void LoseMinigame()
     {
-        Debug.Log("Minigame Lost");
         ResetScriptValues();
         reelScript.TakeOutBob();
         parentGameObject.SetActive(false);

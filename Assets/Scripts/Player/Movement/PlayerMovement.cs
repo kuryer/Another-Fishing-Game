@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Variables")]
     [SerializeField] float movementSpeed;
     [SerializeField] float maxMovementSpeed;
-    Vector2 inputDir;
+    float inputDir;
 
     [Header("Animation")]
     [SerializeField] PlayerAnimation playerAnimation;
@@ -29,13 +29,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.linearVelocity.magnitude > maxMovementSpeed)
             return;
-        rb.linearVelocity = ((orientation.forward * inputDir.y + orientation.right * inputDir.x) * movementSpeed);
+        rb.linearVelocity = ((orientation.forward * inputDir) * movementSpeed);
     }
 
     public void GetMovementInput(InputAction.CallbackContext context)
     {
-        inputDir = context.ReadValue<Vector2>();
-        if (inputDir == Vector2.zero)
+        if (!enabled)
+            return;
+        inputDir = context.ReadValue<float>();
+        if (inputDir == 0)
             playerAnimation.PlayAnimation("idle");
         else
             playerAnimation.PlayAnimation("walk");
