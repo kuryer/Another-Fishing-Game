@@ -3,7 +3,47 @@ guid: 19b986c07232d8246a549dd581a89664
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_furcolor_texture.png
+    second: {fileID: 2100000, guid: f48c5aaa25bed244fbb2f27b9450fffd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_glasses_texture.png
+    second: {fileID: 2100000, guid: f22711bae246a6641960c71f0813a8ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_mouth.png
+    second: {fileID: 2100000, guid: 75406983d4cf1434b9354207566007ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: closed_eye_texture.png
+    second: {fileID: 2100000, guid: 5cf3e6618f367fa418a06a185dacc036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes_shocked.png
+    second: {fileID: 2100000, guid: ad6327f0bd000e3428c8c98405126851, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ja_eye_texture.png
+    second: {fileID: 2100000, guid: 075704d9744edbe4fb656be3bc073701, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pog_mouth_texture.png
+    second: {fileID: 2100000, guid: 1c5b68a8d78cc784b94f977e4689c936, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rod_texture.png
+    second: {fileID: 2100000, guid: 9f9c91e331c677044aad776d59ae2d27, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
