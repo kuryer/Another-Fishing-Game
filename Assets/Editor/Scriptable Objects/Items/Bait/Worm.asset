@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Worm
   m_EditorClassIdentifier: 
   itemName: Worm
-  itemSprite: {fileID: 21300000, guid: 5c751e10462d66b4ba512611e6adf3c6, type: 3}
+  itemSprite: {fileID: 21300000, guid: 52c672cacd0bd994b98d5ea83703dcf9, type: 3}
   sellPrice: 10
   buyPrice: 10
   baitChance: 10

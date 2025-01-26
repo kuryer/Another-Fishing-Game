@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e55afc69f4d56543975339f52717be1, type: 3}
-  m_Name: Carp
+  m_Name: Salmon
   m_EditorClassIdentifier: 
-  itemName: Carp
-  itemSprite: {fileID: 21300000, guid: e62f8b2fca76abc43ba6067a0dfb05e3, type: 3}
-  sellPrice: 15
-  buyPrice: 30
-  dropChance: 30
-  lovedBaits: []
+  itemName: Salmon
+  itemSprite: {fileID: 21300000, guid: 2f991ef7d35c98944ba15548941b4a01, type: 3}
+  sellPrice: 60
+  buyPrice: 80
+  dropChance: 15
+  lovedBaits:
+  - {fileID: 11400000, guid: 28733941a918a3b48a8105eb6258e3c0, type: 2}
   blockadesAmount: {x: 2, y: 3}
-  blockadesLives: {x: 5, y: 7}
+  blockadesLives: {x: 13, y: 18}

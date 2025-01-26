@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e55afc69f4d56543975339f52717be1, type: 3}
-  m_Name: Carp
+  m_Name: Pufferfish
   m_EditorClassIdentifier: 
-  itemName: Carp
-  itemSprite: {fileID: 21300000, guid: e62f8b2fca76abc43ba6067a0dfb05e3, type: 3}
-  sellPrice: 15
-  buyPrice: 30
-  dropChance: 30
-  lovedBaits: []
-  blockadesAmount: {x: 2, y: 3}
-  blockadesLives: {x: 5, y: 7}
+  itemName: Pufferfish
+  itemSprite: {fileID: 21300000, guid: 8a98821ff3345444fb779aaa5f84e7c6, type: 3}
+  sellPrice: 200
+  buyPrice: 350
+  dropChance: 3
+  lovedBaits:
+  - {fileID: 11400000, guid: 4267f8f05195f214f80b95234023d088, type: 2}
+  blockadesAmount: {x: 3, y: 4}
+  blockadesLives: {x: 15, y: 20}

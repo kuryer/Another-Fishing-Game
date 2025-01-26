@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 35.3, y: -55.500015}
-  m_SizeDelta: {x: 74.4, y: 34}
+  m_SizeDelta: {x: 89.8263, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4522426099483796825
 CanvasRenderer:
@@ -144,8 +144,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7debba4281e137a4f99b34b915a8ed41, type: 2}
+  m_sharedMaterial: {fileID: -8993601072201671049, guid: 7debba4281e137a4f99b34b915a8ed41,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -333,8 +334,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: c5500acfb4b314b489e0ce2370c65fbf, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

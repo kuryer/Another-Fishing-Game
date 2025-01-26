@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cricket
   m_EditorClassIdentifier: 
   itemName: Cricket
-  itemSprite: {fileID: 21300000, guid: 5c751e10462d66b4ba512611e6adf3c6, type: 3}
+  itemSprite: {fileID: 21300000, guid: 575da80331d86fc4ea420011693a9878, type: 3}
   sellPrice: 10
   buyPrice: 20
   baitChance: 10
