@@ -1,11 +1,15 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject optionsPanel;
+
+    [Header("Exit")]
+    [SerializeField] StringVariable sceneName;
+    [SerializeField] BoolVariable startsHovering;
     public void PauseInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -18,7 +22,7 @@ public class PauseScript : MonoBehaviour
 
     void CheckFreezeTime()
     {
-        if (pausePanel.activeInHierarchy)
+        if (pausePanel.activeInHierarchy && !startsHovering.Variable)
         {
             Time.timeScale = 0f;
         }
@@ -35,8 +39,15 @@ public class PauseScript : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
-    public void ExitButton()
+    public void LoadScene()
     {
-        Debug.Log("Exit Button");
+        SceneManager.LoadScene(sceneName.Variable);
+    }
+
+    public void ExitButtonPressed()
+    {
+        sceneName.Variable = "Main Menu";
+        Time.timeScale = 1f;
+        startsHovering.Variable = true;
     }
 }

@@ -3,12 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] string gameSceneName;
-
-
-    public void StartGame()
+    [SerializeField] StringVariable sceneName;
+    [SerializeField] BoolVariable startsHovering;
+    public void StartPressed()
     {
-        SceneManager.LoadScene(gameSceneName);
+        sceneName.Variable = "SampleScene";
+        startsHovering.Variable = true;
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(sceneName.Variable);
     }
 
     public void ExitGame()

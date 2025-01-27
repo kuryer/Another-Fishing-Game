@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Water
   - Slider Block
+  - Water Detection
   layers:
   - Default
   - TransparentFX

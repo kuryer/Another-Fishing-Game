@@ -7,7 +7,7 @@ public class FishingDetection : MonoBehaviour
     [SerializeField] private float rayStartingDistance;
     [SerializeField] private float rayStepDistance;
     [SerializeField] private Vector3 rayDirection;
-    [SerializeField] private LayerMask waterLayer;
+    [SerializeField] private string waterDetectionTag;
     private bool[] detections;
     void Start()
     {
@@ -25,8 +25,15 @@ public class FishingDetection : MonoBehaviour
         bool result = false;
         for (int i = 0; i < raysCount; i++)
         {
-            detections[i] = Physics.Raycast(transform.position + (transform.forward * rayStartingDistance) + (transform.forward * rayStepDistance * i),
-                rayDirection, rayLength, waterLayer);
+            RaycastHit hit;
+            Physics.Raycast(transform.position + (transform.forward * rayStartingDistance) + (transform.forward * rayStepDistance * i),
+                rayDirection, out hit, rayLength);
+            if (hit.collider is null)
+                detections[i] = false;
+            else
+                detections[i] = hit.collider.CompareTag(waterDetectionTag);
+
+
             if (detections[i]) result = true;
         }
         return result;

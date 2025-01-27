@@ -5,8 +5,16 @@ using UnityEngine.InputSystem;
 public class DescriptionScript : MonoBehaviour
 {
     string description;
+    string itemName;
     [SerializeField] Vector2 offset;
     [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] TextMeshProUGUI itemNameText;
+
+    public void SetName(string name)
+    {
+        itemName = name;
+        itemNameText.text = name;
+    }
 
     public void Setup(string desc)
     {
