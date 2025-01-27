@@ -32,7 +32,7 @@ public class PlayerRotation : MonoBehaviour
         if (!isRotating)
             return;
         Vector3 mousePosDelta = MousePos - previousMousePos;
-        transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0);
+        transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0) * rotationSpeed * Time.deltaTime;
     }
     public void GetMouseInput(InputAction.CallbackContext context)
     {

@@ -3,9 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopBlock : MonoBehaviour, IPointerClickHandler
+public class ShopBlock : DescriptionBlock, IPointerClickHandler
 {
-    [SerializeField] Item currentItem = null;
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI priceText;
 

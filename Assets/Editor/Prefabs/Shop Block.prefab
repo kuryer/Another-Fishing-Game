@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0844d191ea7604aafd7269b26324c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnBlockEnterEvent: {fileID: 11400000, guid: 744d8f99f8bd0034db762f181255d28d, type: 2}
+  OnBlockExitEvent: {fileID: 11400000, guid: c0432826cbba73245b0e00a96b168f2b, type: 2}
   currentItem: {fileID: 0}
   itemImage: {fileID: 374559637348710522}
   priceText: {fileID: 4552485748149592003}

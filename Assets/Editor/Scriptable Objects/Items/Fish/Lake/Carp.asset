@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Carp
   m_EditorClassIdentifier: 
   itemName: Carp
+  description: Crap
   itemSprite: {fileID: 21300000, guid: e62f8b2fca76abc43ba6067a0dfb05e3, type: 3}
   sellPrice: 15
   buyPrice: 30

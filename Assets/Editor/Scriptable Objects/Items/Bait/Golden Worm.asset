@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Golden Worm
   m_EditorClassIdentifier: 
   itemName: Golden Worm
+  description: G O L D
   itemSprite: {fileID: 21300000, guid: f61e77ec92a4ba94190ad1e169dea1ef, type: 3}
   sellPrice: 40
   buyPrice: 40

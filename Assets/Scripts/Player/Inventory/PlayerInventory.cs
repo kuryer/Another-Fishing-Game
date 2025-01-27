@@ -21,6 +21,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] ActivityState UiActivityState;
     [SerializeField] ActivityState wanderingActivityState;
     [SerializeField] PlayerStateManager playerStateManager;
+    [SerializeField] GameEvent onInventoryClosedEvent;
 
     [Header("Debug bait")]
     [SerializeField] Bait debugBait;
@@ -106,11 +107,16 @@ public class PlayerInventory : MonoBehaviour
 
     void SetInventoryActive(bool isActive)
     {
-       inventoryUI.SetActive(isActive);
-       if(isActive)
+        inventoryUI.SetActive(isActive);
+        if (isActive)
+        {
             playerStateManager.ChangeState(UiActivityState);
-       else
+        }
+        else
+        {
             playerStateManager.ChangeState(wanderingActivityState);
+            onInventoryClosedEvent.Raise();
+        }
     }
 
     public void UpdateMoney()
