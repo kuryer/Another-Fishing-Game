@@ -80,7 +80,7 @@ public class BobReel : MonoBehaviour
             else
             {
                 fishingParticles.Play();
-                //ustaw animacje ci¹gn¹cej ryby
+                playerAnimation.PlayAnimation("fish_wrestling");
             }
 
         }
