@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] BoolVariable startsHovering;
     public void StartPressed()
     {
-        sceneName.Variable = "SampleScene";
+        sceneName.Variable = "Main Scene";
         startsHovering.Variable = true;
     }
 

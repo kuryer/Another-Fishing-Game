@@ -14,6 +14,9 @@ public class ShopScript : MonoBehaviour
     [SerializeField] ActivityStateValue currentActivity;
     [SerializeField] ActivityState wanderingActivity;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Vector2 pitchRange;
     private void Start()
     {
         InitializeBlocks();
@@ -37,6 +40,7 @@ public class ShopScript : MonoBehaviour
         playerMoney.Inrease(item.sellPrice);
         playerInventory.RemoveItem(item);
         playerInventory.UpdateMoney();
+        PlayAudio();
     }
 
     public void BuyItem(Item item)
@@ -50,6 +54,7 @@ public class ShopScript : MonoBehaviour
         playerMoney.Inrease(-item.buyPrice);
         playerInventory.AddItem(item);
         playerInventory.UpdateMoney();
+        PlayAudio();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,5 +78,12 @@ public class ShopScript : MonoBehaviour
             playerInventory.SetShopActive(!isOpened);
             return;
         }
+    }
+
+    void PlayAudio()
+    {
+        float pitch = Random.Range(pitchRange.x, pitchRange.y);
+        audioSource.pitch = pitch;
+        audioSource.Play();
     }
 }

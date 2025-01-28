@@ -10,6 +10,12 @@ public class PauseScript : MonoBehaviour
     [Header("Exit")]
     [SerializeField] StringVariable sceneName;
     [SerializeField] BoolVariable startsHovering;
+
+    private void Start()
+    {
+        sceneName.Variable = null;
+    }
+
     public void PauseInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -41,7 +47,8 @@ public class PauseScript : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(sceneName.Variable);
+        if(sceneName.Variable is not null)
+            SceneManager.LoadScene(sceneName.Variable);
     }
 
     public void ExitButtonPressed()

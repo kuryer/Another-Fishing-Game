@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Perch
   m_EditorClassIdentifier: 
   itemName: Perch
+  description: He looks like he always hangs out in schools and never breaks the
+    rules
   itemSprite: {fileID: 21300000, guid: 22b744ecd97474a4683f17dd317cbdda, type: 3}
   sellPrice: 20
   buyPrice: 35

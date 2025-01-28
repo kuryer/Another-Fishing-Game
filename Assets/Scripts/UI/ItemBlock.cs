@@ -7,7 +7,7 @@ public class ItemBlock : DescriptionBlock, IPointerClickHandler
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI countText;
-
+    [SerializeField] GameEvent onDescriptionExit;
     [Header("Bait Selection")]
     [SerializeField] GameObject baitHighlightUI;
     [SerializeField] GameEvent onDeactivateBaitHighlights;
@@ -40,11 +40,15 @@ public class ItemBlock : DescriptionBlock, IPointerClickHandler
             DeselectBait();
         currentItem = null;
         itemImage.enabled = false;
+        onDescriptionExit.Raise();
         countText.text = string.Empty;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Right)
+            return;
+
         if(currentItem == currentBait.Item)
         {
             DeselectBait();

@@ -91,9 +91,9 @@ Transform:
   - {fileID: 4134303731967694113}
   - {fileID: 7597744935889723950}
   - {fileID: 475034567121265483}
-  - {fileID: 8434977681356837478}
-  - {fileID: 7635878366021641681}
   - {fileID: 3709364581692495164}
+  - {fileID: 7635878366021641681}
+  - {fileID: 8434977681356837478}
   - {fileID: 2140206018414110479}
   m_Father: {fileID: 2710679477770605964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -673,6 +673,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentBait: {fileID: 11400000, guid: 15ec984eaec1a6d4f9c6752ff5e8d025, type: 2}
   playerMoney: {fileID: 11400000, guid: 8342f433773cab54c835c47528acefbc, type: 2}
   moneyText: {fileID: 0}
   currentActivity: {fileID: 11400000, guid: 4ca8e2a0acd098d4cbeb48a03339f6b3, type: 2}
@@ -929,15 +930,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.55068004
-      outSlope: 0.55068004
+      inSlope: 1.2983267
+      outSlope: 1.2983267
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.111918606
+      outWeight: 0.0765488
     - serializedVersion: 3
       time: 1
-      value: -0.6
+      value: -0.9
       inSlope: -3.3962245
       outSlope: -3.3962245
       tangentMode: 0
@@ -961,6 +962,9 @@ MonoBehaviour:
   maxThrowTime: 1.75
   meshRenderer: {fileID: 5593000859143661702}
   bobCollider: {fileID: 7450508719126396319}
+  dipParticles: {fileID: 0}
+  splashAudioSource: {fileID: 0}
+  throwAudioSource: {fileID: 0}
 --- !u!114 &4099806437790751176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1040,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   fishShowcase: {fileID: 7716030346489012974}
   playerAnimation: {fileID: 5992649608838534562}
+  fishingParticles: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &591292470133504108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,8 +1122,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6988172599242366875}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: 1.35, z: 0.24}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.95000076, y: 1.3500003, z: 0.23999786}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1285,8 +1291,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8511001721227863783}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.40000153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

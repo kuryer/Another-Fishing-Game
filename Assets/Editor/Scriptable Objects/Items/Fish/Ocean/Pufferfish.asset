@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pufferfish
   m_EditorClassIdentifier: 
   itemName: Pufferfish
+  description: "Cute and chill\u2014until it\u2019s not."
   itemSprite: {fileID: 21300000, guid: 8a98821ff3345444fb779aaa5f84e7c6, type: 3}
   sellPrice: 200
   buyPrice: 350

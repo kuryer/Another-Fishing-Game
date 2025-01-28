@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Piranha
   m_EditorClassIdentifier: 
   itemName: Piranha
+  description: Definitely the fish to avoid at a dinner party
   itemSprite: {fileID: 21300000, guid: 4dc34c039a92a424ebffd157100a56a0, type: 3}
   sellPrice: 200
   buyPrice: 240

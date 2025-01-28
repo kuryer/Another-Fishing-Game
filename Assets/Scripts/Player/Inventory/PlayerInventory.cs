@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     Dictionary<Item,int> inventory = new Dictionary<Item,int>();
     [SerializeField] List<ItemBlock> itemBlocks;
     [SerializeField] List<SellItemScript> sellItems;
+    [SerializeField] BaitValue currentBait;
 
     [Header("Player's Money")]
     [SerializeField] IntVariable playerMoney;
@@ -28,6 +29,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
+        currentBait.SetNull();
         UpdateMoney();
         DebugBait();
     }

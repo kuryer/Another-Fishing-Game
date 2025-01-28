@@ -21,6 +21,11 @@ public class TransitionScript : MonoBehaviour
         animator.Play("Transition_Start");
     }
 
+    public void PlayEndTransition()
+    {
+        animator.Play("Transition_End");
+    }
+
     public void TransitionFinished()
     {
         onTransitionFinished.Raise();

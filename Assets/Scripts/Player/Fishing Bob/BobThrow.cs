@@ -29,6 +29,14 @@ public class BobThrow : MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Collider bobCollider;
 
+    [Header("Particles")]
+    [SerializeField] ParticleSystem dipParticles;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource splashAudioSource;
+    [SerializeField] AudioSource throwAudioSource;
+
+
     void Start()
     {
         
@@ -43,7 +51,6 @@ public class BobThrow : MonoBehaviour
     {
         if (!isHolding)
             return;
-        Debug.Log(throwTime);
         throwTime += Time.deltaTime;
         if (throwTime >= maxThrowTime)
             Throw();
@@ -74,6 +81,7 @@ public class BobThrow : MonoBehaviour
         meshRenderer.enabled = true;
         bobCollider.enabled = true;
         enabled = true;
+        throwAudioSource.Play();
         throwCoroutine = StartCoroutine(BobTravel());
     }
 
@@ -113,6 +121,8 @@ public class BobThrow : MonoBehaviour
         {
             StopCoroutine(throwCoroutine);
             reelScript.enabled = true;
+            dipParticles.Play();
+            splashAudioSource.Play();
             enabled = false;
         }
     }

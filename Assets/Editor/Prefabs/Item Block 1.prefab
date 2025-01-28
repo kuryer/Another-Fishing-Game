@@ -55,10 +55,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnBlockEnterEvent: {fileID: 11400000, guid: 744d8f99f8bd0034db762f181255d28d, type: 2}
+  OnItemNameSetEvent: {fileID: 0}
   OnBlockExitEvent: {fileID: 11400000, guid: c0432826cbba73245b0e00a96b168f2b, type: 2}
   currentItem: {fileID: 0}
   itemImage: {fileID: 4028973067040707805}
   countText: {fileID: 4919812926628828092}
+  onDescriptionExit: {fileID: 11400000, guid: c0432826cbba73245b0e00a96b168f2b, type: 2}
   baitHighlightUI: {fileID: 4295708283973831295}
   onDeactivateBaitHighlights: {fileID: 11400000, guid: 1ad174ea414472d41a068ba984d9d513,
     type: 2}
@@ -381,7 +383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5bb07787815a25c42866fc4efcb09567, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a12cad2919130c4d87d1f110e682b5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

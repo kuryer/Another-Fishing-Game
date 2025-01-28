@@ -7,15 +7,16 @@ TagManager:
   - Water
   - Slider Block
   - Water Detection
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - WaterDetection
-  - 
+  - Player
   - 
   - 
   - 

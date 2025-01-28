@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Squid
   m_EditorClassIdentifier: 
   itemName: Squid
-  description: Works for some fishes I guess
+  description: 'Works for some fishes
+
+    I guess..'
   itemSprite: {fileID: 21300000, guid: a6edde0372069a646b8980cd4909ac49, type: 3}
   sellPrice: 10
   buyPrice: 30

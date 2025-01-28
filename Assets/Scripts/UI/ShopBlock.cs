@@ -20,6 +20,7 @@ public class ShopBlock : DescriptionBlock, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        shopScript.BuyItem(currentItem);
+        if(eventData.button == PointerEventData.InputButton.Left)
+            shopScript.BuyItem(currentItem);
     }
 }

@@ -37,6 +37,12 @@ public class BobReel : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] PlayerAnimation playerAnimation;
+
+    [Header("Particles")]
+    [SerializeField] ParticleSystem fishingParticles;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
     void Start()
     {
         
@@ -73,6 +79,7 @@ public class BobReel : MonoBehaviour
             }
             else
             {
+                fishingParticles.Play();
                 //ustaw animacje ci¹gn¹cej ryby
             }
 
@@ -98,7 +105,9 @@ public class BobReel : MonoBehaviour
 
     public void TakeOutBob()
     {
+        SetPlayAudio(false);
         playerAnimation.PlayAnimation("fish_takeout");
+        fishingParticles.Stop();
         StartCoroutine(TakeOutAnimation());
     }
 
@@ -147,9 +156,15 @@ public class BobReel : MonoBehaviour
         if(currentFish.Item == null)
         {
             if (context.performed)
+            {
                 isReeling = true;
+                SetPlayAudio(true);
+            }
             if (context.canceled)
+            {
                 isReeling = false;
+                SetPlayAudio(false);
+            }
         }
         else
         {
@@ -161,6 +176,8 @@ public class BobReel : MonoBehaviour
 
     void startMinigame()
     {
+        isReeling = false;
+        SetPlayAudio(false);
         minigameObject.SetActive(true);
         enabled = false;
     }
@@ -171,7 +188,16 @@ public class BobReel : MonoBehaviour
         {
             minDistance = fishingDetection.GetDistance().x;
             currentBasin = other.GetComponent<WaterBasin>();
+            Debug.Log("Basin Set");
             enabled = true;
         }
+    }
+
+    void SetPlayAudio(bool isActive)
+    {
+        if(isActive)
+            audioSource.Play();
+        else 
+            audioSource.Stop();
     }
 }

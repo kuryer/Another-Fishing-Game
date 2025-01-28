@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Salmon
   m_EditorClassIdentifier: 
   itemName: Salmon
+  description: Basically the motivational speaker of fish
   itemSprite: {fileID: 21300000, guid: 2f991ef7d35c98944ba15548941b4a01, type: 3}
   sellPrice: 60
   buyPrice: 80

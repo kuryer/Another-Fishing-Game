@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sturgeon
   m_EditorClassIdentifier: 
   itemName: Lingcod
-  description: :0
+  description: Looks prehistoric because it is, and will definitely remind you how
+    things were better in the "Cretaceous period."
   itemSprite: {fileID: 21300000, guid: 5d0fa026b97d02b4db46517c1499d1b5, type: 3}
   sellPrice: 100
   buyPrice: 120
