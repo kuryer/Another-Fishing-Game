@@ -8,14 +8,16 @@ public class PlayerRotation : MonoBehaviour
     bool isRotating;
     Vector2 MousePos;
     Vector2 previousMousePos;
+    [SerializeField] Vector2 mouseDefaultPos;
 
 
     void Start()
     {
         isRotating = true;
+        //Cursor.visible = false;
     }
 
-    void Update()
+    void LateUpdate()
     {
         Rotate();
     }
@@ -27,12 +29,14 @@ public class PlayerRotation : MonoBehaviour
 
     void Rotate()
     {
-        previousMousePos = MousePos;
-        MousePos = Input.mousePosition;
-        if (!isRotating)
+        //previousMousePos = MousePos;
+        if (!isRotating || Time.timeScale <= 0)
             return;
-        Vector3 mousePosDelta = MousePos - previousMousePos;
+        MousePos = Mouse.current.position.value;
+        Vector3 mousePosDelta = MousePos - mouseDefaultPos;
         transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0) * rotationSpeed * Time.deltaTime;
+        Mouse.current.WarpCursorPosition(mouseDefaultPos);
+        previousMousePos = Mouse.current.position.value;
     }
     public void GetMouseInput(InputAction.CallbackContext context)
     {

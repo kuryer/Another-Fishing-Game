@@ -11979,6 +11979,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2263593475322832138, guid: f54b546f8ef02574fb7981e28eaced1c,
+        type: 3}
+      propertyPath: mouseDefaultPos.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263593475322832138, guid: f54b546f8ef02574fb7981e28eaced1c,
+        type: 3}
+      propertyPath: mouseDefaultPos.y
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2346391744363439990, guid: f54b546f8ef02574fb7981e28eaced1c,
         type: 3}
       propertyPath: m_Layer
