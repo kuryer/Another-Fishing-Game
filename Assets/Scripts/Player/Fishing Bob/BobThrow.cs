@@ -8,6 +8,7 @@ public class BobThrow : MonoBehaviour
     [SerializeField] AnimationCurve throwTrajectoryX;
     [SerializeField] AnimationCurve throwTrajectoryY;
     [SerializeField] float bobSpeed;
+    bool isUsed;
     [SerializeField] Rigidbody bobRB;
     [SerializeField] FishingDetection detection;
     [SerializeField] string waterTag;
@@ -117,8 +118,9 @@ public class BobThrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(waterTag))
+        if (other.CompareTag(waterTag) && !reelScript.enabled)
         {
+            bobRB.position = new Vector3(bobRB.position.x, other.gameObject.transform.position.y, bobRB.position.z);
             StopCoroutine(throwCoroutine);
             reelScript.enabled = true;
             dipParticles.Play();

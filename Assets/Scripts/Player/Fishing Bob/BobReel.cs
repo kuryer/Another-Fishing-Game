@@ -114,12 +114,16 @@ public class BobReel : MonoBehaviour
     IEnumerator TakeOutAnimation()
     {
         Vector3 startingPos = bobRB.position;
-        float distance = Vector3.Distance(startingPos, takeOutDestination.position);
+        Vector2 start = new Vector2(startingPos.x, startingPos.z);
+        Vector2 dest = new Vector2(takeOutDestination.position.x, takeOutDestination.position.z);
+        float distance = Vector2.Distance(start, dest);
+        float heightDifference = takeOutDestination.position.y - startingPos.y;
         float currentDistance = 0;
-        takeOutDirection = takeOutDestination.forward.normalized;
+        takeOutDirection = (bobRB.position - takeOutDestination.position).normalized;
         while (currentDistance < distance)
         {
-            bobRB.position = startingPos + distance * EvaluateTrajectory(currentDistance / distance);
+            bobRB.position = startingPos + (distance * EvaluateTrajectory(currentDistance / distance))
+                + (heightDifference * EvaluateHeight(currentDistance/distance));
             currentDistance += takeOutSpeed * Time.deltaTime;
             yield return null;
         }
@@ -139,14 +143,20 @@ public class BobReel : MonoBehaviour
             playerStateManager.ChangeState(showcaseState);
             fishShowcase.Rotate(true);
         }
+        currentBasin = null;
     }
 
     private Vector3 EvaluateTrajectory(float time)
     {
         float x = takeOutTrajectoryX.Evaluate(time) * -takeOutDirection.x;
         float z = takeOutTrajectoryX.Evaluate(time) * -takeOutDirection.z;
+        return new Vector3(x, 0, z);
+    }
+
+    private Vector3 EvaluateHeight(float time)
+    {
         float y = takeOutTrajectoryY.Evaluate(time);
-        return new Vector3(x, y, z);
+        return new Vector3(0, y, 0);
     }
 
     public void ReelBobInput(InputAction.CallbackContext context)
@@ -184,7 +194,7 @@ public class BobReel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(waterTag))
+        if (other.CompareTag(waterTag) && currentBasin is null)
         {
             minDistance = fishingDetection.GetDistance().x;
             currentBasin = other.GetComponent<WaterBasin>();

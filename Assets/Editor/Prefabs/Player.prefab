@@ -989,7 +989,7 @@ MonoBehaviour:
   fishQueryInterval: 1
   minigameObject: {fileID: 0}
   takeOutDestination: {fileID: 7635878366021641681}
-  takeOutSpeed: 2.5
+  takeOutSpeed: 4
   takeOutTrajectoryX:
     serializedVersion: 2
     m_Curve:
@@ -1020,20 +1020,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.9441371
-      outSlope: 1.9441371
+      inSlope: 4.3143835
+      outSlope: 4.3143835
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.06946785
+      outWeight: 0.01744186
     - serializedVersion: 3
-      time: 0.99854654
-      value: 0.0021939874
-      inSlope: -3.3962245
-      outSlope: -3.3962245
+      time: 1
+      value: 0
+      inSlope: -2.3840406
+      outSlope: -2.3840406
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.037500024
+      inWeight: 0.03197676
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
