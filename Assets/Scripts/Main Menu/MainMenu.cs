@@ -5,6 +5,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] StringVariable sceneName;
     [SerializeField] BoolVariable startsHovering;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void StartPressed()
     {
         sceneName.Variable = "Main Scene";

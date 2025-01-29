@@ -18,6 +18,7 @@ MonoBehaviour:
   sellPrice: 60
   buyPrice: 80
   dropChance: 5
-  lovedBaits: []
+  lovedBaits:
+  - {fileID: 11400000, guid: 28733941a918a3b48a8105eb6258e3c0, type: 2}
   blockadesAmount: {x: 2, y: 4}
   blockadesLives: {x: 9, y: 12}

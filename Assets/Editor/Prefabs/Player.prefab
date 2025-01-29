@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+  mouseDefaultPos: {x: 0, y: 0}
 --- !u!114 &1810084462528494629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +685,8 @@ MonoBehaviour:
   onInventoryClosedEvent: {fileID: 11400000, guid: 68201edce61955342b853fc50710f4d3,
     type: 2}
   debugBait: {fileID: 11400000, guid: d438a03247214de4aa157045ab743066, type: 2}
+  onCursorShowEvent: {fileID: 0}
+  onCursorHideEvent: {fileID: 0}
 --- !u!1 &5660227632690358748
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +951,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bobSpeed: 3
+  bobSpeed: 3.4
   bobRB: {fileID: 2341565772343695224}
   detection: {fileID: 8846810063447123762}
   waterTag: Water
@@ -986,10 +989,10 @@ MonoBehaviour:
   wanderingState: {fileID: 11400000, guid: ebc7a95de3cc13846b4ba05c469f32c1, type: 2}
   showcaseState: {fileID: 11400000, guid: 49ee4690931a2734081af9da057a9103, type: 2}
   currentFish: {fileID: 11400000, guid: 2b8de65d9b38f694a88077e9b30bad40, type: 2}
-  fishQueryInterval: 1
+  fishQueryInterval: 1.4
   minigameObject: {fileID: 0}
   takeOutDestination: {fileID: 7635878366021641681}
-  takeOutSpeed: 4
+  takeOutSpeed: 3
   takeOutTrajectoryX:
     serializedVersion: 2
     m_Curve:

@@ -11,6 +11,9 @@ public class PauseScript : MonoBehaviour
     [SerializeField] StringVariable sceneName;
     [SerializeField] BoolVariable startsHovering;
 
+    [SerializeField] GameEvent onShowCursor;
+    [SerializeField] GameEvent onHideCursor;
+
     private void Start()
     {
         sceneName.Variable = null;
@@ -31,10 +34,11 @@ public class PauseScript : MonoBehaviour
         if (pausePanel.activeInHierarchy && !startsHovering.Variable)
         {
             Time.timeScale = 0f;
+            onShowCursor.Raise();
         }
         else
         {
-            Time.timeScale = 1f;
+            ResumeButton();
         }
     }
 
@@ -43,6 +47,7 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 1f;
         pausePanel.SetActive(false);
         optionsPanel.SetActive(false);
+        onHideCursor.Raise();
     }
 
     public void LoadScene()

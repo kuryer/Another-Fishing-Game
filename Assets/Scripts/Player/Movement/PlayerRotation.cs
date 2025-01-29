@@ -14,12 +14,13 @@ public class PlayerRotation : MonoBehaviour
     void Start()
     {
         isRotating = true;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void LateUpdate()
+    void Update()
     {
         Rotate();
+
     }
 
     public void SetIsRotating(bool value)
@@ -29,14 +30,11 @@ public class PlayerRotation : MonoBehaviour
 
     void Rotate()
     {
-        //previousMousePos = MousePos;
         if (!isRotating || Time.timeScale <= 0)
             return;
-        MousePos = Mouse.current.position.value;
-        Vector3 mousePosDelta = MousePos - mouseDefaultPos;
-        transform.eulerAngles += new Vector3(0, mousePosDelta.x, 0) * rotationSpeed * Time.deltaTime;
-        Mouse.current.WarpCursorPosition(mouseDefaultPos);
-        previousMousePos = Mouse.current.position.value;
+        float y = Input.GetAxis("Mouse X");
+        Vector3 rotate = new Vector3(0, y, 0);
+        transform.eulerAngles = transform.eulerAngles + rotate;
     }
     public void GetMouseInput(InputAction.CallbackContext context)
     {

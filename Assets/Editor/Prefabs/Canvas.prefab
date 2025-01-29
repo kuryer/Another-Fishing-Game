@@ -346,6 +346,8 @@ MonoBehaviour:
   optionsPanel: {fileID: 8451769745182260216}
   sceneName: {fileID: 11400000, guid: b008bb488cd1add4197d3e649394325a, type: 2}
   startsHovering: {fileID: 11400000, guid: 30571fae9ba5000408015f8a85e1e603, type: 2}
+  onShowCursor: {fileID: 0}
+  onHideCursor: {fileID: 0}
 --- !u!114 &5862069513841003778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1859,7 @@ MonoBehaviour:
   minigameSliderValue: {fileID: 11400000, guid: 9a4a1f3a5f9959541b2eab94121b9101,
     type: 2}
   minigameSlider: {fileID: 2662770100724217928}
-  sliderSpeed: 10
+  sliderSpeed: 13
   parentGameObject: {fileID: 2267727066156918866}
   reelScript: {fileID: 0}
   currentFish: {fileID: 11400000, guid: 2b8de65d9b38f694a88077e9b30bad40, type: 2}
@@ -1872,7 +1874,7 @@ MonoBehaviour:
   blockTag: Slider Block
   loseSlider: {fileID: 385859790628265381}
   loseSliderBufferMaxValue: 20
-  loseSliderSpeed: 5
+  loseSliderSpeed: 7
 --- !u!50 &2188001927095636678
 Rigidbody2D:
   serializedVersion: 5

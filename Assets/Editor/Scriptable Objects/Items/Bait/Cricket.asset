@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Cricket
   description: Pretty loud but pretty good
   itemSprite: {fileID: 21300000, guid: 575da80331d86fc4ea420011693a9878, type: 3}
-  sellPrice: 10
+  sellPrice: 20
   buyPrice: 20
   baitChance: 10

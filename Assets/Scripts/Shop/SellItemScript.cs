@@ -8,7 +8,7 @@ public class SellItemScript : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (itemBlock.GetItem() == null && eventData.button != PointerEventData.InputButton.Left)
+        if (itemBlock.GetItem() == null || eventData.button != PointerEventData.InputButton.Left)
             return;
         shopScript.SellItem(itemBlock.GetItem());
     }

@@ -32,6 +32,7 @@ public class BobThrow : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] ParticleSystem dipParticles;
+    [SerializeField] LineRenderer fishingLine;
 
     [Header("Audio")]
     [SerializeField] AudioSource splashAudioSource;
@@ -83,6 +84,7 @@ public class BobThrow : MonoBehaviour
         bobCollider.enabled = true;
         enabled = true;
         throwAudioSource.Play();
+        fishingLine.enabled = true;
         throwCoroutine = StartCoroutine(BobTravel());
     }
 

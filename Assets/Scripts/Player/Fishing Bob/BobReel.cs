@@ -40,9 +40,12 @@ public class BobReel : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] ParticleSystem fishingParticles;
+    [SerializeField] LineRenderer fishingLine;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource fishAudioSource;
+    [SerializeField] AudioSource splashAudioSource;
     void Start()
     {
         
@@ -52,6 +55,7 @@ public class BobReel : MonoBehaviour
     {
         currentFish.SetNull();
         isReeling = false;
+        currentfishQueryTime = fishQueryInterval;
     }
 
     void Update()
@@ -81,6 +85,7 @@ public class BobReel : MonoBehaviour
             {
                 fishingParticles.Play();
                 playerAnimation.PlayAnimation("fish_wrestling");
+                fishAudioSource.Play();
             }
 
         }
@@ -108,6 +113,8 @@ public class BobReel : MonoBehaviour
         SetPlayAudio(false);
         playerAnimation.PlayAnimation("fish_takeout");
         fishingParticles.Stop();
+        splashAudioSource.Play();
+        fishAudioSource.Stop();
         StartCoroutine(TakeOutAnimation());
     }
 
@@ -144,6 +151,7 @@ public class BobReel : MonoBehaviour
             fishShowcase.Rotate(true);
         }
         currentBasin = null;
+        fishingLine.enabled = false;
     }
 
     private Vector3 EvaluateTrajectory(float time)

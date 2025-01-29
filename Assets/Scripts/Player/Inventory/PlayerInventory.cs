@@ -26,6 +26,8 @@ public class PlayerInventory : MonoBehaviour
 
     [Header("Debug bait")]
     [SerializeField] Bait debugBait;
+    [SerializeField] GameEvent onCursorShowEvent;
+    [SerializeField] GameEvent onCursorHideEvent;
 
     private void Start()
     {
@@ -112,10 +114,12 @@ public class PlayerInventory : MonoBehaviour
         inventoryUI.SetActive(isActive);
         if (isActive)
         {
+            onCursorShowEvent.Raise();
             playerStateManager.ChangeState(UiActivityState);
         }
         else
         {
+            onCursorHideEvent.Raise();
             playerStateManager.ChangeState(wanderingActivityState);
             onInventoryClosedEvent.Raise();
         }

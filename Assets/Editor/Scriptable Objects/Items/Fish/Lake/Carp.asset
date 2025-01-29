@@ -18,7 +18,7 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: e62f8b2fca76abc43ba6067a0dfb05e3, type: 3}
   sellPrice: 15
   buyPrice: 30
-  dropChance: 30
+  dropChance: 25
   lovedBaits: []
   blockadesAmount: {x: 2, y: 3}
   blockadesLives: {x: 5, y: 7}
